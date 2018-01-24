@@ -68,16 +68,16 @@
                 <li th:class="${active}=='myMessage'?'active':''"><a th:href="@{/admin/myMessage}"><i class="fa fa-keyboard-o"></i> <span>待办事项</span></a></li>
                 <li ><a th:href="@{/admin/500}"><i class="fa fa-file-text"></i> <span>500测试</span></a></li>
                 <li ><a th:href="@{/admin/404}"><i class="fa fa-file-text"></i> <span>404测试</span></a></li>
-                <li class="menu-list"><a href=""><i class="fa fa-file-text"></i> <span>基础设置</span></a>
-                    <ul class="sub-menu-list">
-                        <li th:class="${active}=='#'?'active':''"><a href="#">用户信息</a></li>
+                <li  th:class="${status}=='baseOpen'?' menu-list nav-active':'menu-list' " ><a href=""><i class="fa fa-file-text"></i> <span>基础设置</span></a>
+                    <ul class="sub-menu-list"  >
+                        <li th:class="${active}=='userInfo'?'active':''"><a th:href="@{/admin/userInfo}">用户信息</a></li>
                         <li th:class="${active}=='#'?'active':''"><a href="#">司机信息</a></li>
                         <li th:class="${active}=='#'?'active':''"><a href="#">车辆信息</a></li>
                         <li th:class="${active}=='#'?'active':''"><a href="#">保险管理</a></li>
                         <li th:class="${active}=='#'?'active':''"><a href="#">维修管理</a></li>
                     </ul>
                 </li>
-                <li class="menu-list"><a href=""><i class="fa fa-file-text"></i> <span>车辆管理</span></a>
+                <li th:class="${status}=='#'?' menu-list nav-active':'menu-list' " ><a href=""><i class="fa fa-file-text"></i> <span>车辆管理</span></a>
                     <ul class="sub-menu-list">
                         <li th:class="${active}=='#'?'active':''"><a href="#">车辆看板</a></li>
                         <li th:class="${active}=='#'?'active':''"><a href="#">用车申请</a></li>
@@ -86,14 +86,14 @@
                         <li th:class="${active}=='#'?'active':''"><a href="#">还车登记</a></li>
                     </ul>
                 </li>
-                <li class="menu-list"><a href=""><i class="fa fa-file-text"></i> <span>车辆状态</span></a>
+                <li th:class="${status}=='#'?' menu-list nav-active':'menu-list' " ><a href=""><i class="fa fa-file-text"></i> <span>车辆状态</span></a>
                     <ul class="sub-menu-list">
                         <li th:class="${active}=='#'?'active':''"><a href="#">已派车辆</a></li>
                         <li th:class="${active}=='#'?'active':''"><a href="#">已出车辆</a></li>
                         <li th:class="${active}=='#'?'active':''"><a href="#">已还车辆</a></li>
                     </ul>
                 </li>
-                <li class="menu-list"><a href=""><i class="fa fa-file-text"></i> <span>使用情况</span></a>
+                <li th:class="${status}=='#'?' menu-list nav-active':'menu-list' " ><a href=""><i class="fa fa-file-text"></i> <span>使用情况</span></a>
                     <ul class="sub-menu-list">
                         <li th:class="${active}=='#'?'active':''"><a href="#">司机出车情况</a></li>
                         <li th:class="${active}=='#'?'active':''"><a href="#">车辆申请情况</a></li>

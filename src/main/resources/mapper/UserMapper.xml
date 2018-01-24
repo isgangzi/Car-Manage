@@ -31,6 +31,11 @@
     where username = #{username,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR} and usertype = #{usertype,jdbcType=VARCHAR}
   </select>
   
+  <select id="findAllUser"  resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+  </select>
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from user
