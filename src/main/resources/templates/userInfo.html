@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:with="title='用户信息',active='userInfo',status='baseOpen'">
+<head th:replace="common/left::leftFragment(${title},${active})"></head>
+
+ <link th:href="@{/js/advanced-datatable/css/demo_page.css}" rel="stylesheet" />
+  <link th:href="@{/js/advanced-datatable/css/demo_table.css}" rel="stylesheet" />
+  <link th:href="@{/js/data-tables/DT_bootstrap.css}"  rel="stylesheet"/>
+ <link th:href="@{/css/bootstrap-table.css}"  rel="stylesheet"/>
+ 
+<body class="sticky-header">
+
+<section>
+   <div th:replace="common/left::left-body"></div>
+    
+    <!-- main content start-->
+    <div class="main-content" >
+
+      	<div th:replace="common/header::header-content"></div>
+      	
+        <!--body wrapper start-->
+        <div class="wrapper">
+        
+            <div class="row">
+        <div class="col-sm-12">
+        <section class="panel">
+        <header class="panel-heading">
+            用户信息
+        </header>
+        <div class="panel-body">
+        <div class="adv-table"> 
+       				 			 
+       				 <div class="row">
+       				  <div class="col-lg-6">
+       				 	<div class="btn-group">
+                       <a class="btn btn-primary" data-toggle="modal" href="#myModal2">
+                                新增
+                            </a>
+                    </div>
+       				 </div> 
+       				  <div class="col-lg-6">
+       				 <div class="dataTables_filter" >
+       				 <label>Search: <input class="form-control medium" type="text"></label>
+       				 </div>
+       				 </div>
+       				 </div>
+       				 
+       		 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                            <h4 class="modal-title">新增用户</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="#" class="form-horizontal ">
+                                               
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4">账号：</label>
+                                                    <div class="col-md-6 col-xs-11">
+                                                        <input class="form-control form-control-inline input-medium default-date-picker" size="16" value="" type="text">
+                                                        <span class="help-block">Select date</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4">Start with years viewMode</label>
+                                                    <div class="col-md-6 col-xs-11">
+
+                                                        <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="12-02-2012" class="input-append date dpYears">
+                                                            <input readonly="" value="12-02-2012" size="16" class="form-control" type="text">
+                                                                      <span class="input-group-btn add-on">
+                                                                        <button class="btn btn-primary" type="button"><i class="fa fa-calendar"></i></button>
+                                                                      </span>
+                                                        </div>
+                                                        <span class="help-block">Select date</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4">Months Only</label>
+                                                    <div class="col-md-6 col-xs-11">
+                                                        <div data-date-minviewmode="months" data-date-viewmode="years" data-date-format="mm/yyyy" data-date="102/2012" class="input-append date dpMonths">
+                                                            <input readonly="" value="02/2012" size="16" class="form-control" type="text">
+                                                                      <span class="input-group-btn add-on">
+                                                                        <button class="btn btn-primary" type="button"><i class="fa fa-calendar"></i></button>
+                                                                      </span>
+                                                        </div>
+
+
+                                                        <span class="help-block">Select month only</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4">Date Range</label>
+                                                    <div class="col-md-6">
+                                                        <div class="input-group input-large custom-date-range" data-date="13/07/2013" data-date-format="mm/dd/yyyy">
+                                                            <input class="form-control dpd1" name="from" type="text">
+                                                            <span class="input-group-addon">To</span>
+                                                            <input class="form-control dpd2" name="to" type="text">
+                                                        </div>
+                                                        <span class="help-block">Select date range</span>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button data-dismiss="modal" class="btn btn-primary" type="button">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+       				 
+       				 
+		     	   <table id="UserInfoTable"  data-toggle="table" >
+		        <thead>
+                            <tr>
+                                <th>用户名</th>
+                                <th>状态</th>
+                                <th>性别</th>
+                                <th>生日</th>
+                                <th>地址</th>
+                                <th>手机号</th>
+                                <th>Email</th>
+                            </tr>
+                </thead>
+                            <tbody>
+                            <th:block th:each="userInfo : ${userInfo.list}">
+                                <tr th:attr="id=${userInfo.id}">
+                                    <td  th:text="${userInfo.username}"  ></td>
+                                    <td>
+                                       <th:block th:if="${userInfo.enable== 0}">
+                                            <span>禁用</span>
+                                        </th:block>
+                                        <th:block th:if="${userInfo.enable == 1}">
+                                            <span>启用</span>
+                                        </th:block>
+                                    </td>
+                                     <td>
+                                       <th:block th:if="${userInfo.sex== '0'}">
+                                            <span>男</span>
+                                        </th:block>
+                                        <th:block th:if="${userInfo.sex== '1'}">
+                                            <span>女</span>
+                                        </th:block>
+                                    </td>
+                                    <td  th:text="${#dates.format(userInfo.birthday,'yyyy-MM-dd HH:mm:ss')}"  ></td>
+                                    <td  th:text="${userInfo.address}"  ></td>
+                                    <td  th:text="${userInfo.phone}"  ></td>
+                                    <td  th:text="${userInfo.email}"  ></td>
+                                </tr>
+                            </th:block>
+                            </tbody>
+		        </table>
+		        <div th:replace="common/pagination :: pageNav(${userInfo})"></div>
+        </div>
+        </div>
+        </section>
+        </div>
+        </div>
+            
+        </div>
+        <!--body wrapper end-->
+		<div th:replace="common/footer :: footer-content"></div>
+    </div>
+    <!-- main content end-->
+</section>
+<div th:replace="common/footer :: footer"></div>
+</body>
+</html>
