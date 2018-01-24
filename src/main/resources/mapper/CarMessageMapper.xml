@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.CarManage.dao.CarMessageMapper">
+  <resultMap id="BaseResultMap" type="com.CarManage.entitys.CarMessage">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="FROMID" jdbcType="VARCHAR" property="fromid" />
+    <result column="FROMNAME" jdbcType="VARCHAR" property="fromname" />
+    <result column="TOID" jdbcType="VARCHAR" property="toid" />
+    <result column="TONAME" jdbcType="VARCHAR" property="toname" />
+    <result column="CONTENT" jdbcType="VARCHAR" property="content" />
+    <result column="STATUS" jdbcType="TINYINT" property="status" />
+    <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, FROMID, FROMNAME, TOID, TONAME, CONTENT, STATUS, CREATETIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from car_message
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  
+   <select id="findAll"   resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from car_message
+  </select>
+  
+    <select id="countItem"   resultType="int">
+   select COUNT(1) from car_message
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from car_message
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.CarManage.entitys.CarMessage">
+    insert into car_message (ID, FROMID, FROMNAME, 
+      TOID, TONAME, CONTENT, 
+      STATUS, CREATETIME)
+    values (#{id,jdbcType=INTEGER}, #{fromid,jdbcType=VARCHAR}, #{fromname,jdbcType=VARCHAR}, 
+      #{toid,jdbcType=VARCHAR}, #{toname,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{status,jdbcType=TINYINT}, #{createtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.CarManage.entitys.CarMessage">
+    insert into car_message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="fromid != null">
+        FROMID,
+      </if>
+      <if test="fromname != null">
+        FROMNAME,
+      </if>
+      <if test="toid != null">
+        TOID,
+      </if>
+      <if test="toname != null">
+        TONAME,
+      </if>
+      <if test="content != null">
+        CONTENT,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="fromid != null">
+        #{fromid,jdbcType=VARCHAR},
+      </if>
+      <if test="fromname != null">
+        #{fromname,jdbcType=VARCHAR},
+      </if>
+      <if test="toid != null">
+        #{toid,jdbcType=VARCHAR},
+      </if>
+      <if test="toname != null">
+        #{toname,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.CarManage.entitys.CarMessage">
+    update car_message
+    <set>
+      <if test="fromid != null">
+        FROMID = #{fromid,jdbcType=VARCHAR},
+      </if>
+      <if test="fromname != null">
+        FROMNAME = #{fromname,jdbcType=VARCHAR},
+      </if>
+      <if test="toid != null">
+        TOID = #{toid,jdbcType=VARCHAR},
+      </if>
+      <if test="toname != null">
+        TONAME = #{toname,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        CONTENT = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.CarManage.entitys.CarMessage">
+    update car_message
+    set FROMID = #{fromid,jdbcType=VARCHAR},
+      FROMNAME = #{fromname,jdbcType=VARCHAR},
+      TOID = #{toid,jdbcType=VARCHAR},
+      TONAME = #{toname,jdbcType=VARCHAR},
+      CONTENT = #{content,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=TINYINT},
+      CREATETIME = #{createtime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

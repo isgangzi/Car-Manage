@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="pageNav(pageInfo)">
+
+<div class="fixed-table-pagination" style="display: block;" >
+	<div class="pull-left pagination-detail">
+	<span class="pagination-info">显示第 <span th:text="${pageInfo.startRow}"></span> 到第 <span th:text="${pageInfo.endRow}"></span> 条记录，总共 <span th:text="${pageInfo.total}"></span>条记录</span>
+		<span class="page-list">每页显示 
+		<span class="btn-group dropup">
+			<button type="button" class="btn btn-default  dropdown-toggle" data-toggle="dropdown">
+				<span class="page-size"  th:text="${pageInfo.pageSize}" ></span>
+				 <span class="caret"></span>
+			 </button>
+				<ul class="dropdown-menu" role="menu">
+				<li  th:class="${pageInfo.pageSize== 5 }?'active':''"><a th:href="@{?pageSize=5}" >5</a></li>
+				<li  th:class="${pageInfo.pageSize== 8 }?'active':''"><a th:href="@{?pageSize=8}" >8</a></li>
+			 </ul>
+		 </span> 
+		 条记录
+	 </span>
+	 </div>
+</div>
+
+
+<div   class="dataTables_paginate paging_bootstrap pagination" >
+        <ul >
+            <li th:if="${pageInfo.hasPreviousPage}">
+                <a th:href="@{'?currentPage='+${pageInfo.prePage}}" >
+                    ← Previous
+                </a>
+            </li>
+
+            <th:block th:each="nav : ${pageInfo.navigatepageNums}">
+                <li th:class="${nav==pageInfo.pageNum}?'active':''"><a th:href="@{'?currentPage='+${nav}}" th:text="${nav}"></a>
+                </li>
+            </th:block>
+
+            <th:block th:if="${pageInfo.hasNextPage}">
+                <li>
+                    <a th:href="@{'?currentPage='+${pageInfo.nextPage}}" >
+                        Next → 
+                    </a>
+                </li>
+            </th:block>
+
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>

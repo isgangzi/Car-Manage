@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:with="title='待办事项',active='myMessage'">
+<head th:replace="common/left::leftFragment(${title},${active})"></head>
+
+ <link th:href="@{/js/advanced-datatable/css/demo_page.css}" rel="stylesheet" />
+  <link th:href="@{/js/advanced-datatable/css/demo_table.css}" rel="stylesheet" />
+  <link th:href="@{/js/data-tables/DT_bootstrap.css}"  rel="stylesheet"/>
+ <link th:href="@{/css/bootstrap-table.css}"  rel="stylesheet"/>
+ 
+<body class="sticky-header">
+
+<section>
+   <div th:replace="common/left::left-body"></div>
+    
+    <!-- main content start-->
+    <div class="main-content" >
+
+      	<div th:replace="common/header::header-content"></div>
+      	
+        <!--body wrapper start-->
+        <div class="wrapper">
+        
+            <div class="row">
+        <div class="col-sm-12">
+        <section class="panel">
+        <header class="panel-heading">
+            待办事项
+        </header>
+        <div class="panel-body">
+        <div class="adv-table"> 
+		        <table id="myMessageTable"  data-toggle="table" >
+		        <thead>
+                            <tr>
+                                <th>消息日期</th>
+                                <th>消息内容</th>
+                                <th>消息状态</th>
+                                <th>操作</th>
+                            </tr>
+                </thead>
+                            <tbody>
+                            <th:block th:each="messageList : ${messageList.list}">
+                                <tr th:attr="id=${messageList.id}">
+                                    <td  th:text="${#dates.format(messageList.createtime,'yyyy-MM-dd HH:mm:ss')}"  ></td>
+                                    <td th:text="${messageList.content}"></td>
+                                    <td>
+                                       <th:block th:if="${messageList.status == 0}">
+                                            <span>未读</span>
+                                        </th:block>
+                                        <th:block th:if="${messageList.status == 1}">
+                                            <span>已读</span>
+                                        </th:block>
+                                    </td>
+                                    <td>-</td>
+                                </tr>
+                            </th:block>
+                            </tbody>
+		        </table>
+		        <div th:replace="common/pagination :: pageNav(${messageList})"></div>
+        </div>
+        </div>
+        </section>
+        </div>
+        </div>
+            
+        </div>
+        <!--body wrapper end-->
+		<div th:replace="common/footer :: footer-content"></div>
+    </div>
+    <!-- main content end-->
+</section>
+<div th:replace="common/footer :: footer"></div>
+</body>
+</html>

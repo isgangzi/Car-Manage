@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.CarManage.dao.CarCarinfoMapper">
+  <resultMap id="BaseResultMap" type="com.CarManage.entitys.CarCarinfo">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="CARNUM" jdbcType="VARCHAR" property="carnum" />
+    <result column="CARBRAND" jdbcType="VARCHAR" property="carbrand" />
+    <result column="CARTYPE" jdbcType="VARCHAR" property="cartype" />
+    <result column="USESTATUS" jdbcType="TINYINT" property="usestatus" />
+    <result column="FLUETYPE" jdbcType="VARCHAR" property="fluetype" />
+    <result column="ENGINENUM" jdbcType="VARCHAR" property="enginenum" />
+    <result column="SEATNUM" jdbcType="INTEGER" property="seatnum" />
+    <result column="PURPOSE" jdbcType="VARCHAR" property="purpose" />
+    <result column="BELONGDEPT" jdbcType="VARCHAR" property="belongdept" />
+    <result column="PURCHASEPRICE" jdbcType="INTEGER" property="purchaseprice" />
+    <result column="DISPLACEMENT" jdbcType="REAL" property="displacement" />
+    <result column="CARSTATUS" jdbcType="TINYINT" property="carstatus" />
+    <result column="PURCHASEDATE" jdbcType="TIMESTAMP" property="purchasedate" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.CarManage.entitys.CarCarinfo">
+    <result column="PHOTO" jdbcType="LONGVARCHAR" property="photo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, CARNUM, CARBRAND, CARTYPE, USESTATUS, FLUETYPE, ENGINENUM, SEATNUM, PURPOSE, 
+    BELONGDEPT, PURCHASEPRICE, DISPLACEMENT, CARSTATUS, PURCHASEDATE
+  </sql>
+  <sql id="Blob_Column_List">
+    PHOTO
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from car_carinfo
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from car_carinfo
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.CarManage.entitys.CarCarinfo">
+    insert into car_carinfo (ID, CARNUM, CARBRAND, 
+      CARTYPE, USESTATUS, FLUETYPE, 
+      ENGINENUM, SEATNUM, PURPOSE, 
+      BELONGDEPT, PURCHASEPRICE, DISPLACEMENT, 
+      CARSTATUS, PURCHASEDATE, PHOTO
+      )
+    values (#{id,jdbcType=INTEGER}, #{carnum,jdbcType=VARCHAR}, #{carbrand,jdbcType=VARCHAR}, 
+      #{cartype,jdbcType=VARCHAR}, #{usestatus,jdbcType=TINYINT}, #{fluetype,jdbcType=VARCHAR}, 
+      #{enginenum,jdbcType=VARCHAR}, #{seatnum,jdbcType=INTEGER}, #{purpose,jdbcType=VARCHAR}, 
+      #{belongdept,jdbcType=VARCHAR}, #{purchaseprice,jdbcType=INTEGER}, #{displacement,jdbcType=REAL}, 
+      #{carstatus,jdbcType=TINYINT}, #{purchasedate,jdbcType=TIMESTAMP}, #{photo,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.CarManage.entitys.CarCarinfo">
+    insert into car_carinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="carnum != null">
+        CARNUM,
+      </if>
+      <if test="carbrand != null">
+        CARBRAND,
+      </if>
+      <if test="cartype != null">
+        CARTYPE,
+      </if>
+      <if test="usestatus != null">
+        USESTATUS,
+      </if>
+      <if test="fluetype != null">
+        FLUETYPE,
+      </if>
+      <if test="enginenum != null">
+        ENGINENUM,
+      </if>
+      <if test="seatnum != null">
+        SEATNUM,
+      </if>
+      <if test="purpose != null">
+        PURPOSE,
+      </if>
+      <if test="belongdept != null">
+        BELONGDEPT,
+      </if>
+      <if test="purchaseprice != null">
+        PURCHASEPRICE,
+      </if>
+      <if test="displacement != null">
+        DISPLACEMENT,
+      </if>
+      <if test="carstatus != null">
+        CARSTATUS,
+      </if>
+      <if test="purchasedate != null">
+        PURCHASEDATE,
+      </if>
+      <if test="photo != null">
+        PHOTO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="carnum != null">
+        #{carnum,jdbcType=VARCHAR},
+      </if>
+      <if test="carbrand != null">
+        #{carbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="cartype != null">
+        #{cartype,jdbcType=VARCHAR},
+      </if>
+      <if test="usestatus != null">
+        #{usestatus,jdbcType=TINYINT},
+      </if>
+      <if test="fluetype != null">
+        #{fluetype,jdbcType=VARCHAR},
+      </if>
+      <if test="enginenum != null">
+        #{enginenum,jdbcType=VARCHAR},
+      </if>
+      <if test="seatnum != null">
+        #{seatnum,jdbcType=INTEGER},
+      </if>
+      <if test="purpose != null">
+        #{purpose,jdbcType=VARCHAR},
+      </if>
+      <if test="belongdept != null">
+        #{belongdept,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseprice != null">
+        #{purchaseprice,jdbcType=INTEGER},
+      </if>
+      <if test="displacement != null">
+        #{displacement,jdbcType=REAL},
+      </if>
+      <if test="carstatus != null">
+        #{carstatus,jdbcType=TINYINT},
+      </if>
+      <if test="purchasedate != null">
+        #{purchasedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="photo != null">
+        #{photo,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.CarManage.entitys.CarCarinfo">
+    update car_carinfo
+    <set>
+      <if test="carnum != null">
+        CARNUM = #{carnum,jdbcType=VARCHAR},
+      </if>
+      <if test="carbrand != null">
+        CARBRAND = #{carbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="cartype != null">
+        CARTYPE = #{cartype,jdbcType=VARCHAR},
+      </if>
+      <if test="usestatus != null">
+        USESTATUS = #{usestatus,jdbcType=TINYINT},
+      </if>
+      <if test="fluetype != null">
+        FLUETYPE = #{fluetype,jdbcType=VARCHAR},
+      </if>
+      <if test="enginenum != null">
+        ENGINENUM = #{enginenum,jdbcType=VARCHAR},
+      </if>
+      <if test="seatnum != null">
+        SEATNUM = #{seatnum,jdbcType=INTEGER},
+      </if>
+      <if test="purpose != null">
+        PURPOSE = #{purpose,jdbcType=VARCHAR},
+      </if>
+      <if test="belongdept != null">
+        BELONGDEPT = #{belongdept,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseprice != null">
+        PURCHASEPRICE = #{purchaseprice,jdbcType=INTEGER},
+      </if>
+      <if test="displacement != null">
+        DISPLACEMENT = #{displacement,jdbcType=REAL},
+      </if>
+      <if test="carstatus != null">
+        CARSTATUS = #{carstatus,jdbcType=TINYINT},
+      </if>
+      <if test="purchasedate != null">
+        PURCHASEDATE = #{purchasedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="photo != null">
+        PHOTO = #{photo,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.CarManage.entitys.CarCarinfo">
+    update car_carinfo
+    set CARNUM = #{carnum,jdbcType=VARCHAR},
+      CARBRAND = #{carbrand,jdbcType=VARCHAR},
+      CARTYPE = #{cartype,jdbcType=VARCHAR},
+      USESTATUS = #{usestatus,jdbcType=TINYINT},
+      FLUETYPE = #{fluetype,jdbcType=VARCHAR},
+      ENGINENUM = #{enginenum,jdbcType=VARCHAR},
+      SEATNUM = #{seatnum,jdbcType=INTEGER},
+      PURPOSE = #{purpose,jdbcType=VARCHAR},
+      BELONGDEPT = #{belongdept,jdbcType=VARCHAR},
+      PURCHASEPRICE = #{purchaseprice,jdbcType=INTEGER},
+      DISPLACEMENT = #{displacement,jdbcType=REAL},
+      CARSTATUS = #{carstatus,jdbcType=TINYINT},
+      PURCHASEDATE = #{purchasedate,jdbcType=TIMESTAMP},
+      PHOTO = #{photo,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.CarManage.entitys.CarCarinfo">
+    update car_carinfo
+    set CARNUM = #{carnum,jdbcType=VARCHAR},
+      CARBRAND = #{carbrand,jdbcType=VARCHAR},
+      CARTYPE = #{cartype,jdbcType=VARCHAR},
+      USESTATUS = #{usestatus,jdbcType=TINYINT},
+      FLUETYPE = #{fluetype,jdbcType=VARCHAR},
+      ENGINENUM = #{enginenum,jdbcType=VARCHAR},
+      SEATNUM = #{seatnum,jdbcType=INTEGER},
+      PURPOSE = #{purpose,jdbcType=VARCHAR},
+      BELONGDEPT = #{belongdept,jdbcType=VARCHAR},
+      PURCHASEPRICE = #{purchaseprice,jdbcType=INTEGER},
+      DISPLACEMENT = #{displacement,jdbcType=REAL},
+      CARSTATUS = #{carstatus,jdbcType=TINYINT},
+      PURCHASEDATE = #{purchasedate,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

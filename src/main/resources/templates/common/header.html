@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body th:fragment="header-content">
+  <!-- header section start-->
+        <div class="header-section">
+
+            <!--toggle button start-->
+            <a class="toggle-btn"><i class="fa fa-bars"></i></a>
+            <!--toggle button end-->
+
+            <!--search start-->
+            <form class="searchform"  th:action="@{/admin/index}" method="post">
+                <input type="text" class="form-control" name="keyword" placeholder="Search here..." />
+            </form>
+            <!--search end-->
+
+            <!--notification menu start -->
+            <div class="menu-right">
+                <ul class="notification-menu">
+                    <li>
+                        <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <img th:src="@{/images/photos/user-avatar.png}" alt="" />
+                            管理员
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                            <li><a href="#"><i class="fa fa-user"></i>个人信息</a></li>
+                            <li><a href="#"><i class="fa fa-cog"></i>设置</a></li>
+                            <li><a th:href="@{/login}"><i class="fa fa-sign-out"></i>注销</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            <!--notification menu end -->
+
+        </div>
+        <!-- header section end-->
+
+		<!-- page heading start-->
+        <div class="page-heading">
+            <h3>
+                企业内勤车辆管理系统
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">企业内勤车辆管理系统</a>
+                </li>
+                <li class="active" th:text="${title}"></li>
+            </ul>
+            <div class="state-info">
+                
+            </div>
+        </div>
+        <!-- page heading end-->
+
+
+</body>
+</html>

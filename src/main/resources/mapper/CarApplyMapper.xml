@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.CarManage.dao.CarApplyMapper">
+  <resultMap id="BaseResultMap" type="com.CarManage.entitys.CarApply">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="APPLYNUM" jdbcType="VARCHAR" property="applynum" />
+    <result column="APPLYDATE" jdbcType="TIMESTAMP" property="applydate" />
+    <result column="APPLICANT" jdbcType="VARCHAR" property="applicant" />
+    <result column="APPLICANTID" jdbcType="VARCHAR" property="applicantid" />
+    <result column="CARNUMBER" jdbcType="VARCHAR" property="carnumber" />
+    <result column="DRIVER" jdbcType="VARCHAR" property="driver" />
+    <result column="DRIVERID" jdbcType="VARCHAR" property="driverid" />
+    <result column="DEPARTUREPLACE" jdbcType="VARCHAR" property="departureplace" />
+    <result column="TARGETPLACE" jdbcType="VARCHAR" property="targetplace" />
+    <result column="DRIROUTEEXPLAIN" jdbcType="VARCHAR" property="drirouteexplain" />
+    <result column="USEBEGINDATE" jdbcType="TIMESTAMP" property="usebegindate" />
+    <result column="USEOVERDATE" jdbcType="TIMESTAMP" property="useoverdate" />
+    <result column="USEREASON" jdbcType="VARCHAR" property="usereason" />
+    <result column="UCMAN" jdbcType="VARCHAR" property="ucman" />
+    <result column="UCMANTEL" jdbcType="VARCHAR" property="ucmantel" />
+    <result column="DRIVEMYSELF" jdbcType="VARCHAR" property="drivemyself" />
+    <result column="ISDISP" jdbcType="VARCHAR" property="isdisp" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="BACKREASON" jdbcType="VARCHAR" property="backreason" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, APPLYNUM, APPLYDATE, APPLICANT, APPLICANTID, CARNUMBER, DRIVER, DRIVERID, DEPARTUREPLACE, 
+    TARGETPLACE, DRIROUTEEXPLAIN, USEBEGINDATE, USEOVERDATE, USEREASON, UCMAN, UCMANTEL, 
+    DRIVEMYSELF, ISDISP, REMARK, BACKREASON
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from car_apply
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from car_apply
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.CarManage.entitys.CarApply">
+    insert into car_apply (ID, APPLYNUM, APPLYDATE, 
+      APPLICANT, APPLICANTID, CARNUMBER, 
+      DRIVER, DRIVERID, DEPARTUREPLACE, 
+      TARGETPLACE, DRIROUTEEXPLAIN, USEBEGINDATE, 
+      USEOVERDATE, USEREASON, UCMAN, 
+      UCMANTEL, DRIVEMYSELF, ISDISP, 
+      REMARK, BACKREASON)
+    values (#{id,jdbcType=INTEGER}, #{applynum,jdbcType=VARCHAR}, #{applydate,jdbcType=TIMESTAMP}, 
+      #{applicant,jdbcType=VARCHAR}, #{applicantid,jdbcType=VARCHAR}, #{carnumber,jdbcType=VARCHAR}, 
+      #{driver,jdbcType=VARCHAR}, #{driverid,jdbcType=VARCHAR}, #{departureplace,jdbcType=VARCHAR}, 
+      #{targetplace,jdbcType=VARCHAR}, #{drirouteexplain,jdbcType=VARCHAR}, #{usebegindate,jdbcType=TIMESTAMP}, 
+      #{useoverdate,jdbcType=TIMESTAMP}, #{usereason,jdbcType=VARCHAR}, #{ucman,jdbcType=VARCHAR}, 
+      #{ucmantel,jdbcType=VARCHAR}, #{drivemyself,jdbcType=VARCHAR}, #{isdisp,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{backreason,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.CarManage.entitys.CarApply">
+    insert into car_apply
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="applynum != null">
+        APPLYNUM,
+      </if>
+      <if test="applydate != null">
+        APPLYDATE,
+      </if>
+      <if test="applicant != null">
+        APPLICANT,
+      </if>
+      <if test="applicantid != null">
+        APPLICANTID,
+      </if>
+      <if test="carnumber != null">
+        CARNUMBER,
+      </if>
+      <if test="driver != null">
+        DRIVER,
+      </if>
+      <if test="driverid != null">
+        DRIVERID,
+      </if>
+      <if test="departureplace != null">
+        DEPARTUREPLACE,
+      </if>
+      <if test="targetplace != null">
+        TARGETPLACE,
+      </if>
+      <if test="drirouteexplain != null">
+        DRIROUTEEXPLAIN,
+      </if>
+      <if test="usebegindate != null">
+        USEBEGINDATE,
+      </if>
+      <if test="useoverdate != null">
+        USEOVERDATE,
+      </if>
+      <if test="usereason != null">
+        USEREASON,
+      </if>
+      <if test="ucman != null">
+        UCMAN,
+      </if>
+      <if test="ucmantel != null">
+        UCMANTEL,
+      </if>
+      <if test="drivemyself != null">
+        DRIVEMYSELF,
+      </if>
+      <if test="isdisp != null">
+        ISDISP,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="backreason != null">
+        BACKREASON,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="applynum != null">
+        #{applynum,jdbcType=VARCHAR},
+      </if>
+      <if test="applydate != null">
+        #{applydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applicant != null">
+        #{applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="applicantid != null">
+        #{applicantid,jdbcType=VARCHAR},
+      </if>
+      <if test="carnumber != null">
+        #{carnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="driver != null">
+        #{driver,jdbcType=VARCHAR},
+      </if>
+      <if test="driverid != null">
+        #{driverid,jdbcType=VARCHAR},
+      </if>
+      <if test="departureplace != null">
+        #{departureplace,jdbcType=VARCHAR},
+      </if>
+      <if test="targetplace != null">
+        #{targetplace,jdbcType=VARCHAR},
+      </if>
+      <if test="drirouteexplain != null">
+        #{drirouteexplain,jdbcType=VARCHAR},
+      </if>
+      <if test="usebegindate != null">
+        #{usebegindate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useoverdate != null">
+        #{useoverdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usereason != null">
+        #{usereason,jdbcType=VARCHAR},
+      </if>
+      <if test="ucman != null">
+        #{ucman,jdbcType=VARCHAR},
+      </if>
+      <if test="ucmantel != null">
+        #{ucmantel,jdbcType=VARCHAR},
+      </if>
+      <if test="drivemyself != null">
+        #{drivemyself,jdbcType=VARCHAR},
+      </if>
+      <if test="isdisp != null">
+        #{isdisp,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="backreason != null">
+        #{backreason,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.CarManage.entitys.CarApply">
+    update car_apply
+    <set>
+      <if test="applynum != null">
+        APPLYNUM = #{applynum,jdbcType=VARCHAR},
+      </if>
+      <if test="applydate != null">
+        APPLYDATE = #{applydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applicant != null">
+        APPLICANT = #{applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="applicantid != null">
+        APPLICANTID = #{applicantid,jdbcType=VARCHAR},
+      </if>
+      <if test="carnumber != null">
+        CARNUMBER = #{carnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="driver != null">
+        DRIVER = #{driver,jdbcType=VARCHAR},
+      </if>
+      <if test="driverid != null">
+        DRIVERID = #{driverid,jdbcType=VARCHAR},
+      </if>
+      <if test="departureplace != null">
+        DEPARTUREPLACE = #{departureplace,jdbcType=VARCHAR},
+      </if>
+      <if test="targetplace != null">
+        TARGETPLACE = #{targetplace,jdbcType=VARCHAR},
+      </if>
+      <if test="drirouteexplain != null">
+        DRIROUTEEXPLAIN = #{drirouteexplain,jdbcType=VARCHAR},
+      </if>
+      <if test="usebegindate != null">
+        USEBEGINDATE = #{usebegindate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useoverdate != null">
+        USEOVERDATE = #{useoverdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usereason != null">
+        USEREASON = #{usereason,jdbcType=VARCHAR},
+      </if>
+      <if test="ucman != null">
+        UCMAN = #{ucman,jdbcType=VARCHAR},
+      </if>
+      <if test="ucmantel != null">
+        UCMANTEL = #{ucmantel,jdbcType=VARCHAR},
+      </if>
+      <if test="drivemyself != null">
+        DRIVEMYSELF = #{drivemyself,jdbcType=VARCHAR},
+      </if>
+      <if test="isdisp != null">
+        ISDISP = #{isdisp,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="backreason != null">
+        BACKREASON = #{backreason,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.CarManage.entitys.CarApply">
+    update car_apply
+    set APPLYNUM = #{applynum,jdbcType=VARCHAR},
+      APPLYDATE = #{applydate,jdbcType=TIMESTAMP},
+      APPLICANT = #{applicant,jdbcType=VARCHAR},
+      APPLICANTID = #{applicantid,jdbcType=VARCHAR},
+      CARNUMBER = #{carnumber,jdbcType=VARCHAR},
+      DRIVER = #{driver,jdbcType=VARCHAR},
+      DRIVERID = #{driverid,jdbcType=VARCHAR},
+      DEPARTUREPLACE = #{departureplace,jdbcType=VARCHAR},
+      TARGETPLACE = #{targetplace,jdbcType=VARCHAR},
+      DRIROUTEEXPLAIN = #{drirouteexplain,jdbcType=VARCHAR},
+      USEBEGINDATE = #{usebegindate,jdbcType=TIMESTAMP},
+      USEOVERDATE = #{useoverdate,jdbcType=TIMESTAMP},
+      USEREASON = #{usereason,jdbcType=VARCHAR},
+      UCMAN = #{ucman,jdbcType=VARCHAR},
+      UCMANTEL = #{ucmantel,jdbcType=VARCHAR},
+      DRIVEMYSELF = #{drivemyself,jdbcType=VARCHAR},
+      ISDISP = #{isdisp,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      BACKREASON = #{backreason,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

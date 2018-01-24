@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:with="title='首页',active='home'">
+<head th:replace="common/left::leftFragment(${title},${active})"></head>
+
+<body class="sticky-header">
+<section>
+<div th:replace="common/left::left-body"></div>
+
+    <!-- main content start-->
+    <div class="main-content" >
+    
+	<div th:replace="common/header::header-content"></div>
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+            <div class="row">
+                <div class="col-md-6">
+                    <!--statistics start-->
+                    <div class="row state-overview">
+                        <div class="col-md-6 col-xs-12 col-sm-6">
+                            <div class="panel purple">
+                                <div class="symbol">
+                                    <i class="fa fa-gavel"></i>
+                                </div>
+                                <div class="state-value">
+                                    <div class="value">230</div>
+                                    <div class="title">待办事项</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-12 col-sm-6">
+                            <div class="panel red">
+                                <div class="symbol">
+                                    <i class="fa fa-tags"></i>
+                                </div>
+                                <div class="state-value">
+                                    <div class="value">3490</div>
+                                    <div class="title">用车申请</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row state-overview">
+                        <div class="col-md-6 col-xs-12 col-sm-6">
+                            <div class="panel blue">
+                                <div class="symbol">
+                                    <i class="fa fa-money"></i>
+                                </div>
+                                <div class="state-value">
+                                    <div class="value">22014</div>
+                                    <div class="title"> 出车登记</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-12 col-sm-6">
+                            <div class="panel green">
+                                <div class="symbol">
+                                    <i class="fa fa-eye"></i>
+                                </div>
+                                <div class="state-value">
+                                    <div class="value">390</div>
+                                    <div class="title"> 还车登记</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--statistics end-->
+                </div>
+                <div class="col-md-6">
+                    <!--more statistics box start-->
+                    <div class="panel deep-purple-box">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-7 col-sm-7 col-xs-7">
+                                    <div id="graph-donut" class="revenue-graph"></div>
+
+                                </div>
+                                <div class="col-md-5 col-sm-5 col-xs-5">
+                                    <ul class="bar-legend">
+                                        <li><span class="blue"></span> Open rate</li>
+                                        <li><span class="green"></span> Click rate</li>
+                                        <li><span class="purple"></span> Share rate</li>
+                                        <li><span class="red"></span> Unsubscribed rate</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--more statistics box end-->
+                    
+                </div>
+            </div>
+
+        </div>
+        <!--body wrapper end-->
+        <div th:replace="common/footer :: footer-content"></div>
+    </div>
+    <!-- main content end-->
+</section>
+<div th:replace="common/footer :: footer"></div>
+</body>
+</html>

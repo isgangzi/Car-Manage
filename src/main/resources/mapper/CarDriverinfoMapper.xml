@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.CarManage.dao.CarDriverinfoMapper">
+  <resultMap id="BaseResultMap" type="com.CarManage.entitys.CarDriverinfo">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="USERID" jdbcType="INTEGER" property="userid" />
+    <result column="DRIVERNAME" jdbcType="VARCHAR" property="drivername" />
+    <result column="IDCARD" jdbcType="VARCHAR" property="idcard" />
+    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+    <result column="SEX" jdbcType="VARCHAR" property="sex" />
+    <result column="TELEPHONE" jdbcType="VARCHAR" property="telephone" />
+    <result column="BIRTHDATE" jdbcType="TIMESTAMP" property="birthdate" />
+    <result column="LICENSETYPE" jdbcType="VARCHAR" property="licensetype" />
+    <result column="LICENSENUMBER" jdbcType="VARCHAR" property="licensenumber" />
+    <result column="LICENSEGETDATE" jdbcType="TIMESTAMP" property="licensegetdate" />
+    <result column="IFFULLTIME" jdbcType="VARCHAR" property="iffulltime" />
+    <result column="PHOTO" jdbcType="VARCHAR" property="photo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, USERID, DRIVERNAME, IDCARD, ADDRESS, SEX, TELEPHONE, BIRTHDATE, LICENSETYPE, 
+    LICENSENUMBER, LICENSEGETDATE, IFFULLTIME, PHOTO
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from car_driverinfo
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from car_driverinfo
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.CarManage.entitys.CarDriverinfo">
+    insert into car_driverinfo (ID, USERID, DRIVERNAME, 
+      IDCARD, ADDRESS, SEX, 
+      TELEPHONE, BIRTHDATE, LICENSETYPE, 
+      LICENSENUMBER, LICENSEGETDATE, IFFULLTIME, 
+      PHOTO)
+    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{drivername,jdbcType=VARCHAR}, 
+      #{idcard,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{telephone,jdbcType=VARCHAR}, #{birthdate,jdbcType=TIMESTAMP}, #{licensetype,jdbcType=VARCHAR}, 
+      #{licensenumber,jdbcType=VARCHAR}, #{licensegetdate,jdbcType=TIMESTAMP}, #{iffulltime,jdbcType=VARCHAR}, 
+      #{photo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.CarManage.entitys.CarDriverinfo">
+    insert into car_driverinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="userid != null">
+        USERID,
+      </if>
+      <if test="drivername != null">
+        DRIVERNAME,
+      </if>
+      <if test="idcard != null">
+        IDCARD,
+      </if>
+      <if test="address != null">
+        ADDRESS,
+      </if>
+      <if test="sex != null">
+        SEX,
+      </if>
+      <if test="telephone != null">
+        TELEPHONE,
+      </if>
+      <if test="birthdate != null">
+        BIRTHDATE,
+      </if>
+      <if test="licensetype != null">
+        LICENSETYPE,
+      </if>
+      <if test="licensenumber != null">
+        LICENSENUMBER,
+      </if>
+      <if test="licensegetdate != null">
+        LICENSEGETDATE,
+      </if>
+      <if test="iffulltime != null">
+        IFFULLTIME,
+      </if>
+      <if test="photo != null">
+        PHOTO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="drivername != null">
+        #{drivername,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null">
+        #{birthdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="licensetype != null">
+        #{licensetype,jdbcType=VARCHAR},
+      </if>
+      <if test="licensenumber != null">
+        #{licensenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="licensegetdate != null">
+        #{licensegetdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="iffulltime != null">
+        #{iffulltime,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        #{photo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.CarManage.entitys.CarDriverinfo">
+    update car_driverinfo
+    <set>
+      <if test="userid != null">
+        USERID = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="drivername != null">
+        DRIVERNAME = #{drivername,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        IDCARD = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        SEX = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        TELEPHONE = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null">
+        BIRTHDATE = #{birthdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="licensetype != null">
+        LICENSETYPE = #{licensetype,jdbcType=VARCHAR},
+      </if>
+      <if test="licensenumber != null">
+        LICENSENUMBER = #{licensenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="licensegetdate != null">
+        LICENSEGETDATE = #{licensegetdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="iffulltime != null">
+        IFFULLTIME = #{iffulltime,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        PHOTO = #{photo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.CarManage.entitys.CarDriverinfo">
+    update car_driverinfo
+    set USERID = #{userid,jdbcType=INTEGER},
+      DRIVERNAME = #{drivername,jdbcType=VARCHAR},
+      IDCARD = #{idcard,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=VARCHAR},
+      TELEPHONE = #{telephone,jdbcType=VARCHAR},
+      BIRTHDATE = #{birthdate,jdbcType=TIMESTAMP},
+      LICENSETYPE = #{licensetype,jdbcType=VARCHAR},
+      LICENSENUMBER = #{licensenumber,jdbcType=VARCHAR},
+      LICENSEGETDATE = #{licensegetdate,jdbcType=TIMESTAMP},
+      IFFULLTIME = #{iffulltime,jdbcType=VARCHAR},
+      PHOTO = #{photo,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

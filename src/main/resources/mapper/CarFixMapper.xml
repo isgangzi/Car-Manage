@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.CarManage.dao.CarFixMapper">
+  <resultMap id="BaseResultMap" type="com.CarManage.entitys.CarFix">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="REGISTRANTID" jdbcType="VARCHAR" property="registrantid" />
+    <result column="REGISTRANT" jdbcType="VARCHAR" property="registrant" />
+    <result column="REGISTTIME" jdbcType="TIMESTAMP" property="registtime" />
+    <result column="CARNUM" jdbcType="VARCHAR" property="carnum" />
+    <result column="FIXTYPE" jdbcType="TINYINT" property="fixtype" />
+    <result column="TOTAL" jdbcType="INTEGER" property="total" />
+    <result column="FIXTIME" jdbcType="TIMESTAMP" property="fixtime" />
+    <result column="FIXSITE" jdbcType="VARCHAR" property="fixsite" />
+    <result column="FIXCORP" jdbcType="VARCHAR" property="fixcorp" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, REGISTRANTID, REGISTRANT, REGISTTIME, CARNUM, FIXTYPE, TOTAL, FIXTIME, FIXSITE, 
+    FIXCORP, REMARK
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from car_fix
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from car_fix
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.CarManage.entitys.CarFix">
+    insert into car_fix (ID, REGISTRANTID, REGISTRANT, 
+      REGISTTIME, CARNUM, FIXTYPE, 
+      TOTAL, FIXTIME, FIXSITE, 
+      FIXCORP, REMARK)
+    values (#{id,jdbcType=INTEGER}, #{registrantid,jdbcType=VARCHAR}, #{registrant,jdbcType=VARCHAR}, 
+      #{registtime,jdbcType=TIMESTAMP}, #{carnum,jdbcType=VARCHAR}, #{fixtype,jdbcType=TINYINT}, 
+      #{total,jdbcType=INTEGER}, #{fixtime,jdbcType=TIMESTAMP}, #{fixsite,jdbcType=VARCHAR}, 
+      #{fixcorp,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.CarManage.entitys.CarFix">
+    insert into car_fix
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="registrantid != null">
+        REGISTRANTID,
+      </if>
+      <if test="registrant != null">
+        REGISTRANT,
+      </if>
+      <if test="registtime != null">
+        REGISTTIME,
+      </if>
+      <if test="carnum != null">
+        CARNUM,
+      </if>
+      <if test="fixtype != null">
+        FIXTYPE,
+      </if>
+      <if test="total != null">
+        TOTAL,
+      </if>
+      <if test="fixtime != null">
+        FIXTIME,
+      </if>
+      <if test="fixsite != null">
+        FIXSITE,
+      </if>
+      <if test="fixcorp != null">
+        FIXCORP,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="registrantid != null">
+        #{registrantid,jdbcType=VARCHAR},
+      </if>
+      <if test="registrant != null">
+        #{registrant,jdbcType=VARCHAR},
+      </if>
+      <if test="registtime != null">
+        #{registtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="carnum != null">
+        #{carnum,jdbcType=VARCHAR},
+      </if>
+      <if test="fixtype != null">
+        #{fixtype,jdbcType=TINYINT},
+      </if>
+      <if test="total != null">
+        #{total,jdbcType=INTEGER},
+      </if>
+      <if test="fixtime != null">
+        #{fixtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fixsite != null">
+        #{fixsite,jdbcType=VARCHAR},
+      </if>
+      <if test="fixcorp != null">
+        #{fixcorp,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.CarManage.entitys.CarFix">
+    update car_fix
+    <set>
+      <if test="registrantid != null">
+        REGISTRANTID = #{registrantid,jdbcType=VARCHAR},
+      </if>
+      <if test="registrant != null">
+        REGISTRANT = #{registrant,jdbcType=VARCHAR},
+      </if>
+      <if test="registtime != null">
+        REGISTTIME = #{registtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="carnum != null">
+        CARNUM = #{carnum,jdbcType=VARCHAR},
+      </if>
+      <if test="fixtype != null">
+        FIXTYPE = #{fixtype,jdbcType=TINYINT},
+      </if>
+      <if test="total != null">
+        TOTAL = #{total,jdbcType=INTEGER},
+      </if>
+      <if test="fixtime != null">
+        FIXTIME = #{fixtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fixsite != null">
+        FIXSITE = #{fixsite,jdbcType=VARCHAR},
+      </if>
+      <if test="fixcorp != null">
+        FIXCORP = #{fixcorp,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.CarManage.entitys.CarFix">
+    update car_fix
+    set REGISTRANTID = #{registrantid,jdbcType=VARCHAR},
+      REGISTRANT = #{registrant,jdbcType=VARCHAR},
+      REGISTTIME = #{registtime,jdbcType=TIMESTAMP},
+      CARNUM = #{carnum,jdbcType=VARCHAR},
+      FIXTYPE = #{fixtype,jdbcType=TINYINT},
+      TOTAL = #{total,jdbcType=INTEGER},
+      FIXTIME = #{fixtime,jdbcType=TIMESTAMP},
+      FIXSITE = #{fixsite,jdbcType=VARCHAR},
+      FIXCORP = #{fixcorp,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
