@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:with="title='首页',active='home'">
 <head th:replace="common/left::leftFragment(${title},${active})"></head>
+  <!--Morris Chart CSS -->
+  <link  th:href="@{/js/morris-chart/morris.css}" rel="stylesheet">
 
 <body class="sticky-header">
 <section>
@@ -98,5 +100,8 @@
     <!-- main content end-->
 </section>
 <div th:replace="common/footer :: footer"></div>
+<script th:src="@{/js/morris-chart/morris.js}"></script>
+<script th:src="@{/js/morris-chart/raphael-min.js}"></script>
+<script th:src="@{/js/dashboard-chart-init.js}"></script>
 </body>
 </html>
