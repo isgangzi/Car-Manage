@@ -42,7 +42,7 @@
 				<artifactId>spring-boot-starter-web</artifactId>
 			</dependency>
 		
-		<!-- druid -->
+		<!-- druid数据源 -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
